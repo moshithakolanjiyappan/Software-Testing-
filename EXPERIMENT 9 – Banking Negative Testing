@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class BankingNegativeTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double balance = 5000;
+
+        System.out.println("BANKING NEGATIVE TESTING");
+
+        System.out.print("Enter Withdrawal Amount: ");
+        double amount = sc.nextDouble();
+
+        if (amount <= 0) {
+            System.out.println("Test Passed: Invalid Amount Rejected");
+        } else if (amount > balance) {
+            System.out.println("Test Passed: Insufficient Balance Rejected");
+        } else {
+            balance -= amount;
+            System.out.println("Withdrawal Successful");
+            System.out.println("Remaining Balance: Rs." + balance);
+        }
+
+        System.out.print("Enter Transaction PIN: ");
+        int pin = sc.nextInt();
+
+        if (pin != 1234) {
+            System.out.println("Test Passed: Incorrect PIN Rejected");
+        } else {
+            System.out.println("PIN Verified");
+        }
+
+        sc.close();
+    }
+}
