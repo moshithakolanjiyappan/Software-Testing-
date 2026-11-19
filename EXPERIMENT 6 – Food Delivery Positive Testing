@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class FoodDeliveryPositiveTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int price = 150;
+
+        System.out.println("FOOD DELIVERY APPLICATION");
+        System.out.println("Restaurant: Food Corner");
+        System.out.println("Food Item: Pizza");
+        System.out.println("Price: Rs." + price);
+
+        System.out.print("Enter Quantity: ");
+        int quantity = sc.nextInt();
+
+        if (quantity > 0) {
+            int total = price * quantity;
+
+            System.out.println("Item Added to Cart");
+            System.out.println("Total Amount: Rs." + total);
+
+            sc.nextLine();
+            System.out.print("Enter Delivery Address: ");
+            String address = sc.nextLine();
+
+            if (!address.trim().isEmpty()) {
+                System.out.println("1. Cash on Delivery");
+                System.out.println("2. Online Payment");
+                System.out.print("Select Payment Method: ");
+
+                int payment = sc.nextInt();
+
+                if (payment == 1 || payment == 2) {
+                    System.out.println("Order Placed Successfully");
+                    System.out.println("Delivery Address: " + address);
+                    System.out.println("Order Total: Rs." + total);
+                    System.out.println("Thank You for Ordering!");
+                } else {
+                    System.out.println("Invalid Payment Method");
+                }
+            } else {
+                System.out.println("Delivery Address Required");
+            }
+        } else {
+            System.out.println("Invalid Quantity");
+        }
+
+        sc.close();
+    }
+}
