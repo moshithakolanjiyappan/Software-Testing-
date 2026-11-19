@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class RailwayReservationTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int availableSeats = 50;
+
+        System.out.println("RAILWAY RESERVATION SYSTEM");
+
+        System.out.print("Enter Passenger Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Age: ");
+        int age = sc.nextInt();
+
+        System.out.print("Enter Number of Seats: ");
+        int seats = sc.nextInt();
+
+        if (!name.trim().isEmpty() && age > 0 &&
+            age <= 120 && seats > 0 &&
+            seats <= availableSeats) {
+
+            availableSeats -= seats;
+
+            System.out.println("Ticket Booked Successfully");
+            System.out.println("Passenger Name: " + name);
+            System.out.println("Passenger Age: " + age);
+            System.out.println("Seats Booked: " + seats);
+            System.out.println("Remaining Seats: " + availableSeats);
+
+        } else {
+            System.out.println("Booking Failed");
+            System.out.println("Invalid Passenger Details or Seat Availability");
+        }
+
+        sc.close();
+    }
+}
