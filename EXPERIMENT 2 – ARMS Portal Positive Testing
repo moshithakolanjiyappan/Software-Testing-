@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class ARMSPositiveTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String validUsername = "student";
+        String validPassword = "12345";
+
+        System.out.println("ARMS PORTAL LOGIN");
+        System.out.print("Enter Username: ");
+        String username = sc.nextLine();
+
+        System.out.print("Enter Password: ");
+        String password = sc.nextLine();
+
+        if (username.equals(validUsername) &&
+            password.equals(validPassword)) {
+            System.out.println("Login Successful");
+            System.out.println("Welcome to ARMS Portal");
+            System.out.println("1. View Profile");
+            System.out.println("2. View Attendance");
+            System.out.println("3. View Marks");
+            System.out.print("Enter Choice: ");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Student Profile Displayed");
+                    break;
+                case 2:
+                    System.out.println("Attendance: 90%");
+                    break;
+                case 3:
+                    System.out.println("Marks: 85/100");
+                    break;
+                default:
+                    System.out.println("Invalid Choice");
+            }
+        } else {
+            System.out.println("Login Failed");
+        }
+
+        sc.close();
+    }
+}
