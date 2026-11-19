@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class ARMSNegativeTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String validUsername = "student";
+        String validPassword = "12345";
+
+        System.out.println("ARMS PORTAL NEGATIVE TESTING");
+
+        System.out.print("Enter Username: ");
+        String username = sc.nextLine();
+
+        System.out.print("Enter Password: ");
+        String password = sc.nextLine();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            System.out.println("Test Failed: Fields cannot be empty");
+        } else if (!username.equals(validUsername)) {
+            System.out.println("Test Failed: Invalid Username");
+        } else if (!password.equals(validPassword)) {
+            System.out.println("Test Failed: Invalid Password");
+        } else {
+            System.out.println("Test Passed: Login Successful");
+        }
+
+        sc.close();
+    }
+}
