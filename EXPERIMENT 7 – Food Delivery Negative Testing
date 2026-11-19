@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class FoodDeliveryNegativeTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("FOOD DELIVERY NEGATIVE TESTING");
+
+        System.out.print("Enter Food Quantity: ");
+        int quantity = sc.nextInt();
+
+        if (quantity <= 0) {
+            System.out.println("Test Passed: Invalid Quantity Rejected");
+        } else {
+            System.out.println("Valid Quantity Accepted");
+        }
+
+        sc.nextLine();
+        System.out.print("Enter Delivery Address: ");
+        String address = sc.nextLine();
+
+        if (address.trim().isEmpty()) {
+            System.out.println("Test Passed: Empty Address Rejected");
+        } else {
+            System.out.println("Valid Address Accepted");
+        }
+
+        System.out.print("Enter Payment Option (1 or 2): ");
+        int payment = sc.nextInt();
+
+        if (payment != 1 && payment != 2) {
+            System.out.println("Test Passed: Invalid Payment Rejected");
+        } else {
+            System.out.println("Valid Payment Option");
+        }
+
+        sc.close();
+    }
+}
