@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class LibraryTestPlan {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("LIBRARY MANAGEMENT SYSTEM");
+        System.out.println("TEST PLAN");
+
+        System.out.println("1. Login Testing");
+        System.out.println("2. Book Search Testing");
+        System.out.println("3. Book Issue Testing");
+        System.out.println("4. Book Return Testing");
+        System.out.println("5. Fine Calculation Testing");
+
+        System.out.print("Select Test Case: ");
+        int choice = sc.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Test: Verify valid user login");
+                System.out.println("Expected: Login Successful");
+                System.out.println("Result: PASS");
+                break;
+
+            case 2:
+                System.out.println("Test: Search available book");
+                System.out.println("Expected: Book Details Displayed");
+                System.out.println("Result: PASS");
+                break;
+
+            case 3:
+                System.out.println("Test: Issue available book");
+                System.out.println("Expected: Book Issued Successfully");
+                System.out.println("Result: PASS");
+                break;
+
+            case 4:
+                System.out.println("Test: Return issued book");
+                System.out.println("Expected: Book Returned Successfully");
+                System.out.println("Result: PASS");
+                break;
+
+            case 5:
+                System.out.print("Enter Late Days: ");
+                int days = sc.nextInt();
+
+                int fine = days > 0 ? days * 5 : 0;
+
+                System.out.println("Fine Amount: Rs." + fine);
+                System.out.println("Result: PASS");
+                break;
+
+            default:
+                System.out.println("Invalid Test Case");
+        }
+
+        sc.close();
+    }
+}
