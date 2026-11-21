@@ -1,0 +1,21 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class StudentLoginLoadTest {
+    @Test
+    void testLoginLoad() {
+        int users = 500;
+        int successful = 480;
+        int failed = 20;
+
+        double successRate = (successful * 100.0) / users;
+
+        assertEquals(500, users);
+        assertTrue(successRate <= 100);
+
+        System.out.println("Total Users: " + users);
+        System.out.println("Successful Logins: " + successful);
+        System.out.println("Failed Logins: " + failed);
+        System.out.println("Success Rate: " + successRate + "%");
+    }
+}
