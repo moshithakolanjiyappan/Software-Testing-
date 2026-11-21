@@ -1,0 +1,22 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class CheckboxRadioTest {
+    @Test
+    void testSelection() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+
+        WebElement checkbox = driver.findElement(By.id("my-check-1"));
+        checkbox.click();
+        assertTrue(checkbox.isSelected());
+
+        WebElement radio = driver.findElement(By.id("my-radio-1"));
+        radio.click();
+        assertTrue(radio.isSelected());
+
+        driver.quit();
+    }
+}
