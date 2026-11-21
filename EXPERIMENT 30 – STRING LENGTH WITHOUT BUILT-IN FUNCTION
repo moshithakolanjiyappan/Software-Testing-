@@ -1,0 +1,18 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringLengthTest {
+    int findLength(String s) {
+        int count = 0;
+        for (char ch : s.toCharArray())
+            count++;
+        return count;
+    }
+
+    @Test
+    void testLength() {
+        assertEquals(5, findLength("Hello"));
+        assertEquals(4, findLength("Java"));
+        assertEquals(0, findLength(""));
+    }
+}
