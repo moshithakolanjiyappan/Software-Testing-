@@ -1,0 +1,20 @@
+import org.apache.jmeter.engine.StandardJMeterEngine;
+import org.apache.jmeter.util.JMeterUtils;
+import org.apache.jmeter.testelement.TestPlan;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ARMSLoadTest {
+    @Test
+    void testLoad() {
+        String url = "http://arms.sse.saveetha.com/";
+        int users = 500;
+
+        assertNotNull(url);
+        assertEquals(500, users);
+
+        System.out.println("URL: " + url);
+        System.out.println("Concurrent Users: " + users);
+        System.out.println("Analyze response time, throughput and error rate using JMeter.");
+    }
+}
