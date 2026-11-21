@@ -1,0 +1,31 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.net.http.*;
+import java.net.URI;
+import java.nio.file.*;
+
+class FilePerformanceTest {
+    @Test
+    void testFileTransfer() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+
+        Path file = Path.of("test.txt");
+
+        long start = System.currentTimeMillis();
+
+        HttpRequest upload = HttpRequest.newBuilder()
+            .uri(URI.create("https://example.com/upload"))
+            .POST(HttpRequest.BodyPublishers.ofFile(file))
+            .build();
+
+        HttpResponse<String> response = client.send(
+            upload, HttpResponse.BodyHandlers.ofString());
+
+        long time = System.currentTimeMillis() - start;
+
+        assertTrue(response.statusCode() < 500);
+
+        System.out.println("Upload Time: " + time + " ms");
+        System.out.println("File Size: " + Files.size(file) + " bytes");
+    }
+}
