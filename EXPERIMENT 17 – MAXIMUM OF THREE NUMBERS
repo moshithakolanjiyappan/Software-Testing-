@@ -1,0 +1,15 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class MaximumTest {
+    int max(int a, int b, int c) {
+        return Math.max(a, Math.max(b, c));
+    }
+
+    @Test
+    void testMaximum() {
+        assertEquals(30, max(10, 20, 30));
+        assertEquals(50, max(50, 20, 30));
+        assertEquals(9, max(5, 9, 3));
+    }
+}
