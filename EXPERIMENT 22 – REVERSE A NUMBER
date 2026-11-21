@@ -1,0 +1,22 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ReverseTest {
+    int reverse(int n) {
+        int rev = 0;
+
+        while (n != 0) {
+            rev = rev * 10 + n % 10;
+            n = n / 10;
+        }
+        return rev;
+    }
+
+    @Test
+    void testReverse() {
+        assertEquals(321, reverse(123));
+        assertEquals(987, reverse(789));
+        assertEquals(5, reverse(500));
+        assertEquals(0, reverse(0));
+    }
+}
