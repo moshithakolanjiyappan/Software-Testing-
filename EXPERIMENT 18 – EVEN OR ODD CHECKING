@@ -1,0 +1,16 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class EvenOddTest {
+    boolean isEven(int n) {
+        return n % 2 == 0;
+    }
+
+    @Test
+    void testEvenOdd() {
+        assertTrue(isEven(10));
+        assertTrue(isEven(0));
+        assertFalse(isEven(7));
+        assertFalse(isEven(15));
+    }
+}
