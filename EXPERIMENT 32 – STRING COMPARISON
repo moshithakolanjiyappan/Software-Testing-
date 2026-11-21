@@ -1,0 +1,16 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringCompareTest {
+    boolean compare(String a, String b) {
+        return a.equals(b);
+    }
+
+    @Test
+    void testCompare() {
+        assertTrue(compare("Java", "Java"));
+        assertTrue(compare("Hello", "Hello"));
+        assertFalse(compare("Java", "java"));
+        assertFalse(compare("Hello", "World"));
+    }
+}
