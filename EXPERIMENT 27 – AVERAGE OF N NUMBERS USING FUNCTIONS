@@ -1,0 +1,20 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AverageTest {
+    double average(int[] a) {
+        int sum = 0;
+
+        for (int n : a) {
+            sum += n;
+        }
+        return (double) sum / a.length;
+    }
+
+    @Test
+    void testAverage() {
+        assertEquals(20, average(new int[]{10, 20, 30}), 0.01);
+        assertEquals(15, average(new int[]{10, 20}), 0.01);
+        assertEquals(5, average(new int[]{5, 5, 5}), 0.01);
+    }
+}
