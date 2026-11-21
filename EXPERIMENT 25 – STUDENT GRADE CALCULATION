@@ -1,0 +1,26 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class GradeTest {
+    char grade(int marks) {
+        if (marks >= 90)
+            return 'A';
+        else if (marks >= 80)
+            return 'B';
+        else if (marks >= 70)
+            return 'C';
+        else if (marks >= 60)
+            return 'D';
+        else
+            return 'F';
+    }
+
+    @Test
+    void testGrade() {
+        assertEquals('A', grade(95));
+        assertEquals('B', grade(85));
+        assertEquals('C', grade(75));
+        assertEquals('D', grade(65));
+        assertEquals('F', grade(40));
+    }
+}
