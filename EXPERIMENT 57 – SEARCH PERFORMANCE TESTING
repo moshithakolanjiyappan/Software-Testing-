@@ -1,0 +1,29 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.net.http.*;
+import java.net.URI;
+
+class SearchPerformanceTest {
+    @Test
+    void testSearch() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+
+        for (int i = 1; i <= 10; i++) {
+            long start = System.currentTimeMillis();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://example.com/search?q=java"))
+                .GET().build();
+
+            HttpResponse<String> response = client.send(
+                request, HttpResponse.BodyHandlers.ofString());
+
+            long time = System.currentTimeMillis() - start;
+
+            assertEquals(200, response.statusCode());
+
+            System.out.println("Request: " + i);
+            System.out.println("Response Time: " + time + " ms");
+        }
+    }
+}
