@@ -1,0 +1,17 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class CapacityTest {
+    @Test
+    void testCapacity() {
+        int[] users = {100, 200, 300, 400, 500};
+
+        for (int user : users) {
+            System.out.println("Concurrent Users: " + user);
+            System.out.println("Run the test using JMeter.");
+            System.out.println("Record response time and error rate.");
+        }
+
+        assertEquals(500, users[4]);
+    }
+}
