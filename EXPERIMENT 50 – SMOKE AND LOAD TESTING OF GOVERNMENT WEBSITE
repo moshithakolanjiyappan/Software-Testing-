@@ -1,0 +1,30 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.net.http.*;
+import java.net.URI;
+
+class GovernmentWebsiteTest {
+    @Test
+    void testWebsite() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+
+        String[] urls = {
+            "https://www.india.gov.in/",
+            "https://www.india.gov.in/topics"
+        };
+
+        for (String url : urls) {
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+
+            HttpResponse<String> response =
+                client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            assertEquals(200, response.statusCode());
+
+            System.out.println(url + " : " + response.statusCode());
+        }
+    }
+}
