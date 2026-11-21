@@ -1,0 +1,27 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.net.http.*;
+import java.net.URI;
+
+class BankingAPITest {
+    @Test
+    void testBalance() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://example.com/api/balance"))
+            .GET()
+            .build();
+
+        long start = System.currentTimeMillis();
+        HttpResponse<String> response =
+            client.send(request, HttpResponse.BodyHandlers.ofString());
+        long time = System.currentTimeMillis() - start;
+
+        assertEquals(200, response.statusCode());
+        assertNotNull(response.body());
+        assertTrue(time >= 0);
+
+        System.out.println("Response Time: " + time + " ms");
+    }
+}
