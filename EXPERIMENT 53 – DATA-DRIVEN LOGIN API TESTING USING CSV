@@ -1,0 +1,39 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.*;
+import java.net.http.*;
+import java.net.URI;
+
+class CSVLoginTest {
+    @Test
+    void testLogin() throws Exception {
+        BufferedReader br = new BufferedReader(
+            new FileReader("users.csv"));
+
+        String line;
+        HttpClient client = HttpClient.newHttpClient();
+
+        while ((line = br.readLine()) != null) {
+            String[] data = line.split(",");
+
+            String json = "{\"username\":\"" + data[0] +
+                "\",\"password\":\"" + data[1] + "\"}";
+
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://example.com/api/login"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(json))
+                .build();
+
+            HttpResponse<String> response = client.send(
+                request, HttpResponse.BodyHandlers.ofString());
+
+            assertTrue(response.statusCode() == 200 ||
+                       response.statusCode() == 401);
+
+            System.out.println(data[0] + " : " +
+                response.statusCode());
+        }
+        br.close();
+    }
+}
