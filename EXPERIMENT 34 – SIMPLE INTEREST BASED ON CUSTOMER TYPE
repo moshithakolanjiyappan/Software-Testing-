@@ -1,0 +1,17 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class SimpleInterestTest {
+    double calculate(double p, double r, double t, String type) {
+        if (type.equalsIgnoreCase("VIP"))
+            r += 2;
+        return (p * r * t) / 100;
+    }
+
+    @Test
+    void testInterest() {
+        assertEquals(500, calculate(10000, 5, 1, "Regular"), 0.01);
+        assertEquals(700, calculate(10000, 5, 1, "VIP"), 0.01);
+        assertEquals(1000, calculate(10000, 10, 1, "Regular"), 0.01);
+    }
+}
