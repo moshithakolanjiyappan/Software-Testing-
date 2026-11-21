@@ -1,0 +1,27 @@
+public class Fibonacci {
+
+    public static int fibonacci(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+
+        int a = 1, b = 1, c = 0;
+
+        for (int i = 3; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+
+        return c;
+    }
+
+    public static void main(String[] args) {
+        int n = 7;
+        System.out.println("Fibonacci Term: " + fibonacci(n));
+    }
+}
