@@ -1,0 +1,30 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.net.http.*;
+import java.net.URI;
+
+class PaymentTest {
+    @Test
+    void testPayment() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        String url = "https://example.com/api/payment";
+
+        long start = System.currentTimeMillis();
+
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(url))
+            .GET()
+            .build();
+
+        HttpResponse<String> response =
+            client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        long time = System.currentTimeMillis() - start;
+
+        assertTrue(response.statusCode() < 500);
+
+        System.out.println("Response Time: " + time + " ms");
+        System.out.println("Status Code: " + response.statusCode());
+        System.out.println("Analyze throughput and error percentage using JMeter.");
+    }
+}
