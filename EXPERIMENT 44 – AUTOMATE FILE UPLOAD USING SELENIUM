@@ -1,0 +1,22 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class FileUploadTest {
+    @Test
+    void testUpload() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/upload");
+
+        String path = System.getProperty("user.home") + "/Desktop/test.txt";
+
+        driver.findElement(By.id("file-upload")).sendKeys(path);
+        driver.findElement(By.id("file-submit")).click();
+
+        String result = driver.findElement(By.id("uploaded-files")).getText();
+
+        assertEquals("test.txt", result);
+        driver.quit();
+    }
+}
