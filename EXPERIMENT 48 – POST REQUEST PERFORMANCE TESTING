@@ -1,0 +1,29 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.net.http.*;
+import java.net.URI;
+
+class RegistrationAPITest {
+    @Test
+    void testPost() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+
+        String json = """
+            {"name":"Moshitha","email":"test@gmail.com","password":"Test123"}
+            """;
+
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://example.com/api/register"))
+            .header("Content-Type", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(json))
+            .build();
+
+        HttpResponse<String> response =
+            client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        assertTrue(response.statusCode() == 200 ||
+                   response.statusCode() == 201);
+
+        System.out.println(response.body());
+    }
+}
