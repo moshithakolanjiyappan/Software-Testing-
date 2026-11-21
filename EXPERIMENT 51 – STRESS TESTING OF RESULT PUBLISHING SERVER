@@ -1,0 +1,35 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.net.http.*;
+import java.net.URI;
+
+class ResultStressTest {
+    @Test
+    void testStress() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        String url = "https://example.com/results";
+
+        int[] users = {100, 200, 300, 400, 500};
+
+        for (int user : users) {
+            long start = System.currentTimeMillis();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+
+            HttpResponse<String> response =
+                client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            long time = System.currentTimeMillis() - start;
+
+            System.out.println("Users: " + user);
+            System.out.println("Status: " + response.statusCode());
+            System.out.println("Response Time: " + time + " ms");
+
+            assertTrue(response.statusCode() >= 200 &&
+                       response.statusCode() < 500);
+        }
+    }
+}
