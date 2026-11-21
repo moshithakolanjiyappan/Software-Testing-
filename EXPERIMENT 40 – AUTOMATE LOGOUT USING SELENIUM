@@ -1,0 +1,24 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+class LogoutTest {
+    @Test
+    void testLogout() {
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://example.com/login");
+
+        driver.findElement(By.id("username")).sendKeys("testuser");
+        driver.findElement(By.id("password")).sendKeys("test123");
+        driver.findElement(By.id("login")).click();
+
+        driver.findElement(By.id("logout")).click();
+
+        assertTrue(driver.getCurrentUrl().contains("login"));
+
+        driver.quit();
+    }
+}
