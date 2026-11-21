@@ -1,0 +1,22 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class SumDigitsTest {
+    int sum(int n) {
+        int s = 0;
+
+        while (n != 0) {
+            s += Math.abs(n % 10);
+            n /= 10;
+        }
+        return s;
+    }
+
+    @Test
+    void testSum() {
+        assertEquals(6, sum(123));
+        assertEquals(15, sum(456));
+        assertEquals(1, sum(100));
+        assertEquals(0, sum(0));
+    }
+}
